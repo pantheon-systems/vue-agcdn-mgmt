@@ -1,0 +1,86 @@
+// Define some colors.
+$dangerRed: #c70039;
+$dangerDarkRed: darken($dangerRed, 10%);
+$dangerLightRed: lighten($dangerRed, 5%);
+
+// Some basics are shared between CMS types.
+%admin-area-section {
+  border-top: 1px solid #000;
+  margin-top: 2em;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+}
+
+%update-list {
+  ol {
+    display: block;
+    list-style: none;
+    counter-reset: itemCounter;
+    width: 25%;
+  }
+
+  li {
+    display: flex;
+    align-items: baseline;
+    counter-increment: itemCounter;
+
+    &:before {
+      content: counter(itemCounter) ".";
+      margin-right: 5px;
+    }
+
+    span {
+      margin-right: 5px;
+    }
+  }
+}
+
+// WP-specific styles.
+.wp {
+  &.button--danger {
+    background: $dangerRed !important;
+    border-color: $dangerRed !important;
+    color: #fff !important;
+    text-decoration: none;
+    text-shadow: none;
+
+    &:hover {
+      background: $dangerDarkRed !important;
+      border-color: $dangerDarkRed !important;
+    }
+  }
+
+  &.admin-area-section {
+    @extend %admin-area-section;
+  }
+
+  .update-list {
+    @extend %update-list;
+  }
+}
+
+// Drupal-specific styles.
+.drupal {
+  &.button-danger {
+    border-color: $dangerDarkRed;
+    background-color: $dangerRed;
+    background-image: linear-gradient(to bottom, $dangerRed, $dangerDarkRed);
+    color: #fff;
+    text-shadow: 0 1px hsla(0, 0%, 0%, 0.5);
+
+    &:hover {
+      background-color: $dangerLightRed;
+      background-image: linear-gradient(to bottom, $dangerLightRed, $dangerRed);
+    }
+  }
+
+  &.admin-area-section {
+    @extend %admin-area-section;
+  }
+
+  .update-list {
+    @extend %update-list;
+  }
+}
