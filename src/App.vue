@@ -5,10 +5,6 @@
     <div id="cache" class="admin-area-section" :class="cms" v-if="agcdn_mgmt_api_key">
       <h3>Cache Purge</h3>
       <p><button type="button" :class="cms" class="button button--primary button-primary" @click="purgeAll">{{ purging ? "Purging..." : "Purge All Cache" }}</button></p>
-      <!-- <p>
-        <label for="purgeUrl">URL to purge:</label>
-        <input type="text" v-model="purgeUrl" id="purgeUrl" />
-      </p> -->
     </div>
 
     <div id="dictionaries" class="admin-area-section" :class="cms" v-if="agcdn_mgmt_api_key">
