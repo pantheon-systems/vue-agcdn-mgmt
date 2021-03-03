@@ -68,7 +68,7 @@ export default {
   data() {
     return {
       agcdn_mgmt_api_key: this.cms == 'wp'
-        ? window.WP_OPTIONS.agcdn_mgmt_api_key
+        ? window.WP_OPTIONS.pantheon_agcdn_management_api_key
         : window.drupalSettings.pantheon_agcdn_management.api_key,
       dictsLoading: true,
       aclsLoading: true,
