@@ -69,7 +69,7 @@ export default {
     return {
       agcdn_mgmt_api_key: this.cms == 'wp'
         ? window.WP_OPTIONS.agcdn_mgmt_api_key
-        : window.drupalSettings.agcdn_mgmt_plugin.api_key,
+        : window.drupalSettings.agcdn_management.api_key,
       dictsLoading: true,
       aclsLoading: true,
       dicts: [],
