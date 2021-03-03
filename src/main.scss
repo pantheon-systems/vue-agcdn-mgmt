@@ -39,7 +39,7 @@ $dangerLightRed: lighten($dangerRed, 5%);
 
 // WP-specific styles.
 .wp {
-  &.button--danger {
+  &.button-danger {
     background: $dangerRed !important;
     border-color: $dangerRed !important;
     color: #fff !important;

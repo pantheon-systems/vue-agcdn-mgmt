@@ -67,7 +67,7 @@ export default {
   },
   data() {
     return {
-      agcdn_mgmt_api_key: this.cms == 'wp'
+      agcdn_mgmt_api_key: 'WP_OPTIONS' in window
         ? window.WP_OPTIONS.pantheon_agcdn_management_api_key
         : window.drupalSettings.pantheon_agcdn_management.api_key,
       dictsLoading: true,
@@ -150,7 +150,7 @@ export default {
   },
   mounted() {
     // Don't do these synchronously so that both calls can be issued at the same time.
-    if (this.agcdn_mgmt_api_key !== "") {
+    if (this.agcdn_mgmt_api_key) {
       this.getDictionaries();
       this.getACLs();
     }
@@ -163,6 +163,7 @@ export default {
       return this.acls.filter(a => a.id === this.aclIdToEdit)[0];
     },
     cms: function() {
+      console.log('hello world');
       return 'WP_OPTIONS' in window ? 'wp' : 'drupal';
     },
   },
