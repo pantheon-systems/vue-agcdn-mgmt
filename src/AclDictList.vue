@@ -25,7 +25,6 @@
         </tr>
       </tbody>
     </table>
-    <p>Just for kicks</p>
   </div>
 </template>
 
