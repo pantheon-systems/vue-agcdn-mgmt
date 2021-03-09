@@ -127,7 +127,7 @@ export default {
       };
       this.$api.request('/acls', options).then(res => {
         this.aclsLoading = false;
-        this.acls = res.data.filter(a => a.name !== "waf_allowlist");
+        this.acls = res.data.filter(a => a.name !== "waf allowlist");
         this.filteredACLs = this.acls;
       }).catch(e => {
         this.aclsLoading = false;
