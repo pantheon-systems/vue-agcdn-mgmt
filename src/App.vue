@@ -163,7 +163,6 @@ export default {
       return this.acls.filter(a => a.id === this.aclIdToEdit)[0];
     },
     cms: function() {
-      console.log('hello world');
       return 'WP_OPTIONS' in window ? 'wp' : 'drupal';
     },
   },
