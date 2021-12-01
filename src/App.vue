@@ -28,7 +28,7 @@
       </div>
     </div>
 
-    <div id="acls" class="admin-area-section" :class="cms" v-if="agcdn_mgmt_api_key">
+    <div id="acls" class="admin-area-section" :class="cms" v-if="agcdn_mgmt_api_key && submodule !== 'settings'">
       <h3>ACLs</h3>
       <p v-if="aclsLoading">Loading list...</p>
       <div class="aclWrapper" v-else>
@@ -82,6 +82,9 @@ export default {
       aclLoadingError: false,
       purging: false,
       purgeUrl: '',
+      submodule: 'WP_OPTIONS' in window
+        ? window.WP_OPTIONS.pantheon_agcdn_management_submodule
+        : window.drupalSettings.pantheon_agcdn_management.submodule,
     }
   },
   methods: {
