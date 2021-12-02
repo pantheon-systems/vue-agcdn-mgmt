@@ -115,8 +115,19 @@ export default {
         headers: { agcdn_mgmt_api_key: this.agcdn_mgmt_api_key }
       };
       this.$api.request('/dictionaries', options).then(res => {
+        // Adjust dictionary dataset based on submodule context
+        switch (this.submodule) {
+          case 'settings':
+            res.data.forEach(dict => {
+              if (dict.name.toLowerCase() === this.submodule) {
+                this.dicts.push(dict);
+              }
+            });
+            break;
+          default:
+            this.dicts = res.data;
+        }
         this.dictsLoading = false;
-        this.dicts = res.data;
         this.filteredDicts = this.dicts;
       }).catch(e => {
         this.dictsLoading = false;
