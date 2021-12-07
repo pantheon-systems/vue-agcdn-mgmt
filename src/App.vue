@@ -28,7 +28,7 @@
       </div>
     </div>
 
-    <div id="acls" class="admin-area-section" :class="cms" v-if="agcdn_mgmt_api_key">
+    <div id="acls" class="admin-area-section" :class="cms" v-if="agcdn_mgmt_api_key && submodule !== 'settings'">
       <h3>ACLs</h3>
       <p v-if="aclsLoading">Loading list...</p>
       <div class="aclWrapper" v-else>
@@ -82,6 +82,9 @@ export default {
       aclLoadingError: false,
       purging: false,
       purgeUrl: '',
+      submodule: 'WP_OPTIONS' in window
+        ? window.WP_OPTIONS.pantheon_agcdn_management_submodule
+        : window.drupalSettings.pantheon_agcdn_management.submodule,
     }
   },
   methods: {
@@ -112,8 +115,19 @@ export default {
         headers: { agcdn_mgmt_api_key: this.agcdn_mgmt_api_key }
       };
       this.$api.request('/dictionaries', options).then(res => {
+        // Adjust dictionary dataset based on submodule context
+        switch (this.submodule) {
+          case 'settings':
+            res.data.forEach(dict => {
+              if (dict.name.toLowerCase() === this.submodule) {
+                this.dicts.push(dict);
+              }
+            });
+            break;
+          default:
+            this.dicts = res.data;
+        }
         this.dictsLoading = false;
-        this.dicts = res.data;
         this.filteredDicts = this.dicts;
       }).catch(e => {
         this.dictsLoading = false;
