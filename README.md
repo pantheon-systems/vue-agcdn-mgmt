@@ -1,5 +1,7 @@
 # vue-agcdn-mgmt
 
+[![Unofficial](https://img.shields.io/badge/Pantheon-Unofficial-yellow?logo=pantheon&color=FFDC28)](https://pantheon.io/docs/oss-support-levels#unofficial)
+
 Vue app that is embedded within the pantheon_agcdn_management [Drupal Module](https://github.com/pantheon-systems/pantheon_agcdn_management) and [WordPress plugin](https://github.com/pantheon-systems/pantheon-agcdn-management).
 
 ## Submodule Contexts
